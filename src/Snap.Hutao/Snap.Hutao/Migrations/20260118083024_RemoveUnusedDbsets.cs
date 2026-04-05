@@ -1,0 +1,38 @@
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+namespace Snap.Hutao.Migrations
+{
+    /// <inheritdoc />
+    public partial class RemoveUnusedDbsets : Migration
+    {
+        /// <inheritdoc />
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "uid_profile_pictures");
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.CreateTable(
+                name: "uid_profile_pictures",
+                columns: table => new
+                {
+                    InnerId = table.Column<Guid>(type: "TEXT", nullable: false),
+                    AvatarId = table.Column<uint>(type: "INTEGER", nullable: false),
+                    CostumeId = table.Column<uint>(type: "INTEGER", nullable: false),
+                    ProfilePictureId = table.Column<uint>(type: "INTEGER", nullable: false),
+                    RefreshTime = table.Column<DateTimeOffset>(type: "TEXT", nullable: false),
+                    Uid = table.Column<string>(type: "TEXT", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_uid_profile_pictures", x => x.InnerId);
+                });
+        }
+    }
+}
